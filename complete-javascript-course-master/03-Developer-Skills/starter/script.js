@@ -4,7 +4,10 @@
 // PROBLEM 1:
 // We work for a company building a smart home thermometer. Our most recent task is this: "Given an array of temperatures of one day, calculate the temperature amplitude. Keep in mind that sometimes there might be a sensor error."
 
-const temperatures = [3, -2, -6, -1, 'error', 9, 13, 17, 15, 14, 9, 5];
+const temperatures = [
+  [1, 2, 3, 4],
+  [3, -2, -6, -1, 'error', 9, 13, 17, 15, 14, 9, 5],
+];
 
 // 1) Understanding the problem
 // - What is temp amplitude? Answer: difference between highest and lowest temp
@@ -15,13 +18,14 @@ const temperatures = [3, -2, -6, -1, 'error', 9, 13, 17, 15, 14, 9, 5];
 // - Find max value in temp array
 // - Find min value in temp array
 // - Subtract min from max (amplitude) and return it
+const oneArraywithTemp = temperatures.join(',').split(',');
 
-let min = temperatures[0];
-let max = temperatures[0];
+let min = Number(oneArraywithTemp[0]);
+let max = Number(oneArraywithTemp[0]);
 
 function calcAmplitude(min, max) {
-  for (let i = 0; i < temperatures.length; i++) {
-    let element = temperatures[i];
+  for (let i = 0; i < oneArraywithTemp.length; i++) {
+    let element = Number(oneArraywithTemp[i]);
 
     if (element >= max && typeof element === 'number') {
       max = element;
@@ -35,4 +39,16 @@ function calcAmplitude(min, max) {
   return max - min;
 }
 
+// console.log(calcAmplitude(min, max));
+
+// PROBLEM 2:
+// Function should now receive 2 arrays of temps
+
+// 1) Understanding the problem
+// - With 2 arrays, should we implement functionality twice? NO! Just merge two arrays
+
+// 2) Breaking up into sub-problems
+// - Merge 2 arrays
+
 console.log(calcAmplitude(min, max));
+// console.log(oneArraywithTemp);
