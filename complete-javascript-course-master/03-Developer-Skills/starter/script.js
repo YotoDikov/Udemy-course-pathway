@@ -5,8 +5,8 @@
 // We work for a company building a smart home thermometer. Our most recent task is this: "Given an array of temperatures of one day, calculate the temperature amplitude. Keep in mind that sometimes there might be a sensor error."
 
 const temperatures = [
-  [1, 2, 3, 4],
-  [3, -2, -6, -1, 'error', 9, 13, 17, 15, 14, 9, 5],
+  [3, 5, 1],
+  [9, 0, 5],
 ];
 
 // 1) Understanding the problem
@@ -18,12 +18,12 @@ const temperatures = [
 // - Find max value in temp array
 // - Find min value in temp array
 // - Subtract min from max (amplitude) and return it
-const oneArraywithTemp = temperatures.join(',').split(',');
+const oneArraywithTemp = temperatures[0].concat(temperatures[1]);
 
-let min = Number(oneArraywithTemp[0]);
-let max = Number(oneArraywithTemp[0]);
+function calcAmplitude(arr1, arr2) {
+  let min = Number(oneArraywithTemp[0]);
+  let max = Number(oneArraywithTemp[0]);
 
-function calcAmplitude(min, max) {
   for (let i = 0; i < oneArraywithTemp.length; i++) {
     let element = Number(oneArraywithTemp[i]);
 
@@ -50,5 +50,5 @@ function calcAmplitude(min, max) {
 // 2) Breaking up into sub-problems
 // - Merge 2 arrays
 
-console.log(calcAmplitude(min, max));
+console.log(calcAmplitude(temperatures[0], temperatures[1]));
 // console.log(oneArraywithTemp);
