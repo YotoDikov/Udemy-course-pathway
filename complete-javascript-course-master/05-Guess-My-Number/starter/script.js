@@ -20,12 +20,19 @@ let currentScore;
 
 document.querySelector('.check').addEventListener('click', function () {
   let guessNum = document.querySelector('.guess').value;
-  if (guessNum < number) {
-    message.textContent = '📉 Too low!';
-    scoreCounter.textContent -= 1;
-  } else if (guessNum > number) {
-    message.textContent = '📈 Too high!';
-    scoreCounter.textContent -= 1;
+  if (guessNum === '') {
+    message.textContent = '⛔ No number!';
+  } else if (+guessNum !== number) {
+    if (scoreCounter.textContent > '1') {
+      guessNum < number
+        ? (message.textContent = '📉 Too low!')
+        : (message.textContent = '📈 Too high!');
+
+      scoreCounter.textContent -= 1;
+    } else {
+      message.textContent = '💥 You lost the game!';
+      scoreCounter.textContent = 0;
+    }
   } else {
     message.textContent = '🎉 Correct Number';
     document.querySelector('.number').textContent = guessNum;
