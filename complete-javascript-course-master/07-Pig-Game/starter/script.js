@@ -6,6 +6,15 @@ const rollBtn = document.querySelector('.btn--roll');
 const holdBtn = document.querySelector('.btn--hold');
 const newGameBtn = document.querySelector('.btn--new');
 
+newGameBtn.addEventListener('click', function () {
+  player1.totalScore.textContent = 0;
+  player2.totalScore.textContent = 0;
+  if (!player1.status.classList.contains('player--active')) {
+    player2.status.classList.remove('player--active');
+    player1.status.classList.add('player--active');
+  }
+});
+
 // const swichPlayersTurn = function (p1, p2) {
 //   player.currentScore.textContent = 0;
 //   player.myTurn = false;
