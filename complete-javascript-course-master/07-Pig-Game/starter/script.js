@@ -84,13 +84,13 @@ function swich(player1, player2) {
   }
 }
 
-function roll() {
-  if (player1.myTurn) {
-    playerManipulation(player1);
-  } else {
-    playerManipulation(player2);
-  }
-}
+// function roll() {
+//   if (player1.myTurn) {
+//     playerManipulation(player1);
+//   } else {
+//     playerManipulation(player2);
+//   }
+// }
 function winner(winnerPlayer) {
   winnerPlayer.status.classList.remove('player--active');
   winnerPlayer.status.classList.add('player--winner');
@@ -98,12 +98,30 @@ function winner(winnerPlayer) {
   rollBtn.removeEventListener('click', hold);
 }
 
-const playerManipulation = function (player) {
-  const rollNumber = Math.trunc(Math.random() * 6 + 1);
-  dice.src = `dice-${rollNumber}.png`;
-  if (rollNumber > 1) {
+// const playerManipulation = function (player) {
+// const rollNumber = Math.trunc(Math.random() * 6 + 1);
+// dice.src = `dice-${rollNumber}.png`;
+//   if (rollNumber > 1) {
+//     let num = Number(player.currentScore.textContent);
+//     num += rollNumber;
+//     player.currentScore.textContent = num;
+//   } else {
+//     swich(player1, player2);
+//   }
+// };
+
+function roll() {
+  Math.trunc(Math.random() * 6 + 1);
+  return;
+}
+
+function displayDice() {
+  return (dice.src = `dice-${roll()}.png`);
+}
+
+const totalScoreUp = function (player) {
+  if (roll() > 1) {
     let num = Number(player.currentScore.textContent);
-    num += rollNumber;
     player.currentScore.textContent = num;
   } else {
     swich(player1, player2);
