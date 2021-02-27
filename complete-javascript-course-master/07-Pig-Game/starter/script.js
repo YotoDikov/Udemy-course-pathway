@@ -27,6 +27,7 @@ console.log(player1.status);
 
 player1.totalScore.textContent = 0;
 player2.totalScore.textContent = 0;
+dice.style.display = 'none';
 
 // Display dice
 
@@ -34,6 +35,8 @@ player2.totalScore.textContent = 0;
 newGameBtn.addEventListener('click', function () {
   player1.totalScore.textContent = 0;
   player2.totalScore.textContent = 0;
+  player1.currentScore.textContent = 0;
+  player2.currentScore.textContent = 0;
   if (!player1.status.classList.contains('player--active')) {
     player2.status.classList.remove('player--active');
     player1.status.classList.add('player--active');
@@ -84,13 +87,6 @@ function swich(player1, player2) {
   }
 }
 
-// function roll() {
-//   if (player1.myTurn) {
-//     playerManipulation(player1);
-//   } else {
-//     playerManipulation(player2);
-//   }
-// }
 function winner(winnerPlayer) {
   winnerPlayer.status.classList.remove('player--active');
   winnerPlayer.status.classList.add('player--winner');
@@ -98,32 +94,19 @@ function winner(winnerPlayer) {
   rollBtn.removeEventListener('click', hold);
 }
 
-// const playerManipulation = function (player) {
-// const rollNumber = Math.trunc(Math.random() * 6 + 1);
-// dice.src = `dice-${rollNumber}.png`;
-//   if (rollNumber > 1) {
-//     let num = Number(player.currentScore.textContent);
-//     num += rollNumber;
-//     player.currentScore.textContent = num;
-//   } else {
-//     swich(player1, player2);
-//   }
-// };
-
 function roll() {
-  Math.trunc(Math.random() * 6 + 1);
-  return;
-}
-
-function displayDice() {
-  return (dice.src = `dice-${roll()}.png`);
-}
-
-const totalScoreUp = function (player) {
-  if (roll() > 1) {
-    let num = Number(player.currentScore.textContent);
-    player.currentScore.textContent = num;
+  dice.style.display = 'block';
+  const rolledNumber = Math.trunc(Math.random() * 6 + 1);
+  let player = currnetPlayer(player1, player2);
+  displayDice(rolledNumber);
+  if (rolledNumber > 1) {
+    player.currentScore.textContent =
+      Number(player.currentScore.textContent) + rolledNumber;
   } else {
     swich(player1, player2);
   }
-};
+}
+
+function displayDice(num) {
+  return (dice.src = `dice-${num}.png`);
+}
