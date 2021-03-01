@@ -2,10 +2,10 @@
 
 //THIS KEYWORD:
 
-console.log(this); // Window
+// console.log(this); // Window
 
 const person = function () {
-  console.log(this);
+  return this;
 };
 person(); // Undefined in strct mode. Otherwise will be Window.
 
@@ -15,13 +15,13 @@ const pesho = {
   lastName: 'Pichagata',
   year: 10,
   growup: function () {
-    console.log(this.year + 2); // 12
+    return this.year + 2; // 12
   },
   skill: this,
-  greet: () => console.log(`Hey ${this.firstName}`),
-  hisLastName: () => console.log(`Hes last name is ${this.lastName}`),
+  greet: () => `Hey ${this.firstName}`,
+  hisLastName: () => `Hes last name is ${this.lastName}`,
   sayHi: function () {
-    const sayHello = () => console.log(`Hi! From ${this.lastName}`);
+    const sayHello = () => `Hi! From ${this.lastName}`;
     sayHello();
   },
   sayGoodBye: function () {
@@ -30,8 +30,7 @@ const pesho = {
     // };
   },
   secondSayGoodBye: function () {
-    const arrowGoodByeFromThis = () =>
-      console.log(`Good bye! From ${this.lastName}`);
+    const arrowGoodByeFromThis = () => `Good bye! From ${this.lastName}`;
     arrowGoodByeFromThis();
   },
 };
@@ -44,12 +43,12 @@ pesho.hisLastName(); // Globalniq. Because is in arrow function which is in obje
 
 pesho.sayHi(); // Hi! From Pichagata... The arrow function attached into sayHi's this.
 
-pesho.sayGoodBye(); // Uncaught TypeError: Cannot read property 'lastName' of undefined... This is because his parent function have not this.lastName as property. That is automaticaly returns an error. In this case if the goodByeFromThis function is made as an arrow function what will happen? The arrow function will go into his parent (sayGoodBye) and will searching for lastNameProperty. And if found nothing there will continue to search in the next parent which is the pesho Object. And the result will see in the bottom simple....
+pesho.sayGoodBye(); // Uncaught TypeError: Cannot read property 'lastName' of undefined... This is because his parent function have not this.lastName as property. That is automaticaly returns an error. In this case if the goodByeFromThis function is made as an arrow function what will happen? The arrow function will go into his parent (sayGoodBye) and will searching for lastNameProperty. And if found nothing there will continue to search in the next parent which is the pesho Object. And the result will see in the bottom sample....
 
 pesho.secondSayGoodBye();
 
 function nameThis() {
-  console.log(this);
+  return this;
 }
 nameThis(); // Undefined
 
@@ -61,4 +60,4 @@ mi6o.growup = pesho.growup;
 mi6o.growup(); // 14
 
 mi6o.skill = pesho.skill;
-console.log(mi6o.skill); // Window
+mi6o.skill; // Window
