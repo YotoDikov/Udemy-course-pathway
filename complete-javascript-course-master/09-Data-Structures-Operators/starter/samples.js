@@ -1,5 +1,8 @@
 'use strict';
 
+////////////////////////////////
+// Array destructuring
+
 // const arr = [2, 3, 4];
 // const [a, b, c] = arr; // ... Destructuring
 // console.log(a, b, c); // 2 3 4
@@ -35,5 +38,25 @@
 // const [a, b, c, d] = [1, 2, 3];
 // console.log(a, b, c, d); // 1 2 3 Undefined
 
-const [a = 1, b = 1, c = 1, d = 1] = [1, 2, 3];
-console.log(a, b, c, d); // 1 2 3 1
+// const [a = 1, b = 1, c = 1, d = 1] = [1, 2, 3];
+// console.log(a, b, c, d); // 1 2 3 1
+
+///////////////////////////////////////////
+// Object destructuring
+
+const person = {
+  firstName: 'Pesho',
+  lastName: 'Pecheniq',
+  age: 25,
+};
+console.log(person);
+
+// const { name, secondName, years } = person; // Undefined Undefined Undefined... When we destruture an object we have to use the same property names as the properties of the object we copy . Otherwise its gona be properties with undefined values.
+// const { firstName, lastName, age } = person;
+// console.log(firstName, lastName, age); // Pesho pecheniq 25
+// If we want to use these properties, but with changed names,  we have to do this:
+const { firstName: MainName, lastName: secondName, age: years } = person;
+console.log(MainName, secondName, years); // Pesho Pecheniq 25
+
+const { lastName, age, firstName } = person;
+// console.log(lastname, age, firstName); // Uncaught ReferenceError: lastname is not defined... Seems like we cant switch the propertie's position.
