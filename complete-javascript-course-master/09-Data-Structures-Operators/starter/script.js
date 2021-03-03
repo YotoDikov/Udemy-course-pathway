@@ -26,4 +26,16 @@ const restaurant = {
       close: 24,
     },
   },
+  orderDelivery: function (startIndex, mainIndex, time, adress) {
+    console.log(
+      `Order received! ${this.starterMenu[startIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${adress} at ${time}`
+    );
+  },
 };
+
+restaurant.orderDelivery({
+  time: '22:30',
+  adress: 'Via Angelo Tavanti 23',
+  mainIndex: 2,
+  startIndex: 2,
+});
