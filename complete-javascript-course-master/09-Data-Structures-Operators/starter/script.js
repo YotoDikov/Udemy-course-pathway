@@ -26,16 +26,29 @@ const restaurant = {
       close: 24,
     },
   },
-  orderDelivery: function (startIndex, mainIndex, time, adress) {
+
+  orderDelivery: function ({
+    starterIndex = 1,
+    mainIndex = 0,
+    time = '20:00',
+    address,
+  }) {
+    // Don't forget to set the parametters of function in curly braces, because the func have to take object as parametter. Otherwise will return Undefined.
     console.log(
-      `Order received! ${this.starterMenu[startIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${adress} at ${time}`
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
 };
 
 restaurant.orderDelivery({
   time: '22:30',
-  adress: 'Via Angelo Tavanti 23',
+  address: 'Via Angelo Tavanti 23',
   mainIndex: 2,
-  startIndex: 2,
-});
+  starterIndex: 2,
+}); // Order received! Garlic Bread and Risotto will be delivered to Via Angelo Tavanti 23 at 22:30
+
+// And now, only because we set default values on the properties of the object parameter (above, where we declared the orderDelivery() function) we can try to call this function without defining some of the properties just to check the default values works ...
+restaurant.orderDelivery({
+  address: 'Via Angelo Tavanti 23',
+  starterIndex: 1,
+}); // Order received! Bruschetta and Pizza will be delivered to Via Angelo Tavanti 23 at 20:00
