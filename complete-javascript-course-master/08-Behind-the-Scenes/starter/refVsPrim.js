@@ -41,7 +41,7 @@ pesho4.lastname = 'Pichagata';
 console.log(pesho3); // {firstName: "Pesho", lastname: "Pecheniq"}
 console.log(pesho2); // {firstName: "Pesho", lastname: "Pecheniq"}
 console.log(pesho4); // {firstName: "Pesho", lastname: "Pichagata"}
-// When we declare variable with Object.assign() we made a copy of the "pesho2" object and now we can change prepertise without changing pesho2. But what will happen if we add property with object or array value on pesho2, and the add in this property more elements but in the pesho4 object?For example...
+// When we declare variable with Object.assign() we made a copy of the "pesho2" object and now we can change properties without changing pesho2. But what will happen if we add property with object or array value on pesho2, and the add in this property more elements but in the pesho4 object?For example...
 pesho2.family = ['Gosho, Mara'];
 pesho4.family.push('Gincheto');
 console.log(pesho2);

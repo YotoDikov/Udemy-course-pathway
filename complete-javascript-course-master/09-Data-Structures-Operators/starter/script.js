@@ -34,12 +34,20 @@ const restaurant = {
     address,
   }) {
     // Don't forget to set the parametters of function in curly braces, because the func have to take object as parametter. Otherwise will return Undefined.
+    // console.log(
+    //   `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    // );
+  },
+
+  orderPasta: function (ing1, ing2, ing3) {
     console.log(
-      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+      `Here is your delicious pasta with ${ing1} ${ing2} and ${ing3}`
     );
   },
 };
 
+//////////////////////
+// Destructuring
 restaurant.orderDelivery({
   time: '22:30',
   address: 'Via Angelo Tavanti 23',
@@ -52,3 +60,38 @@ restaurant.orderDelivery({
   address: 'Via Angelo Tavanti 23',
   starterIndex: 1,
 }); // Order received! Bruschetta and Pizza will be delivered to Via Angelo Tavanti 23 at 20:00
+
+/////////////////////
+// Spread operator
+
+// copy array
+// const mainMenuCopy = [...restaurant.mainMenu, 'Bobets'];
+// console.log(mainMenuCopy); // ["Pizza", "Pasta", "Risotto", "Bobets"]
+// console.log(restaurant.mainMenu); // ["Pizza", "Pasta", "Risotto"]
+
+// joint 2 or more arrays
+// const joinArrays = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// console.log(joinArrays); // ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad", "Pizza", "Pasta", "Risotto"]
+
+// Spread operator not only working with arrays, but with all iterables (arrays, strings, maps, sets etc. ) but not with objects.
+// const str = 'Pesho';
+// const letters = [...str, ' ', 'Pichagata'];
+// console.log(letters);
+// console.log(`${...str} Pichagata`); // Uncaught SyntaxError: Unexpected token '...' We cant use spread operator in the interpolation's curly braces, because there is expect to gain one value , and ...str return every letter as individual element separated by coma ...
+
+// const ingredients = [
+//   prompt("Let's make pasta! ingredient 1?"),
+//   prompt('ingredient 2?'),
+//   prompt('ingredient 3?'),
+// ];
+// console.log(ingredients); // return 3 prompts obe by one and there we can wrhite some value
+
+// restaurant.orderPasta(...ingredients); // Here is your delicious pasta with 4u6ki domati and zele
+
+// With Objects
+// const restaurantCopy = [...restaurant]; // Uncaught TypeError: restaurant is not iterable ... That's because restaurant is Object and the objects are not iterable. That's why we'd better put ...restaurant in curly brackeds:
+const restaurantCopy = { ...restaurant }; // Object similar to restaurant's object.
+// Now lets remember what happend when we make a copy of an object with object.assign()... we make shadow copy. That means if we change propery value in the copy that  property will be changed in to the original one to. Lets see what will happen in this case where we create a copy with spread operator:
+restaurantCopy.name = 'Mandjite na Pesho';
+console.log(restaurantCopy.name); // Mandjite na Pesho
+console.log(restaurant.name); // Classico Italiano
