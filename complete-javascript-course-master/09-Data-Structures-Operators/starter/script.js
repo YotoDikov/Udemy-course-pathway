@@ -104,40 +104,40 @@ restaurant.orderDelivery({
 // REST Pattern with destructuring
 // So far we learn about the spread operator that he "unpackage" elements from array. The REST pattern make the opposit of that. It "packing" elements into array .
 // The Spread operator and the REST pattern looks the same as sintax, but they have one differense - the spread is always puts in  right to assignment ( " = " ) , and the Rest is stayng on the left from the assign ...
-const arr = [1, 2, ...[3, 4]]; // Spread operator. from the right.
-const [a, b, ...others] = [1, 2, 3, 4, 5]; // REST pattern. from the left
+// const arr = [1, 2, ...[3, 4]]; // Spread operator. from the right.
+// const [a, b, ...others] = [1, 2, 3, 4, 5]; // REST pattern. from the left
 
-console.log(arr); // [1, 2, 3, 4];
-console.log(a, b, others); // 1 2 [3, 4, 5];
+// console.log(arr); // [1, 2, 3, 4];
+// console.log(a, b, others); // 1 2 [3, 4, 5];
 
-const [pizza, , risotto, ...otherFood] = [
-  ...restaurant.mainMenu,
-  ...restaurant.starterMenu,
-]; // We put an empty element between pizza and risotto only because to try to skip the "pasta element which is there by default."
-console.log(pizza, risotto, otherFood); // Pizza Risotto (4) ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"]
+// const [pizza, , risotto, ...otherFood] = [
+//   ...restaurant.mainMenu,
+//   ...restaurant.starterMenu,
+// ]; // We put an empty element between pizza and risotto only because to try to skip the "pasta element which is there by default."
+// console.log(pizza, risotto, otherFood); // Pizza Risotto (4) ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"]
 // In this example we can see that the "pasta element which stay by default between "Pizza" and "Risotto" is skiped from the result. That is because the REST pattern takes only the elements which is stayng after the closest element stayng on the left of the REST. In this example this element is "Risotto". Everything we skip before risotto and replace with coma is skipped. That is why the REST pattern a;ways be in the last of the destructuring, because it must know what is skipping and to return the rest. Lets see what will happend if we put another element after the REST ...
 // const [pizza2, risotto2, ...otherMenu, pasta] // Uncaught SyntaxError: Rest element must be last element ... We can put REST only in the last of destructuring and we can put only one REST in the destructuring.
 
 // REST with Objects
-const { sat, ...weekDays } = restaurant.openingHours;
+// const { sat, ...weekDays } = restaurant.openingHours;
 
-console.log(weekDays); //  {thu: {…}, fri: {…}}
+// console.log(weekDays); //  {thu: {…}, fri: {…}}
 
 ///////////////////////////////
 // REST Pattern with functions
 
-const add = function (...numbers) {
-  console.log(numbers);
-};
+// const add = function (...numbers) {
+//   console.log(numbers);
+// };
 
-add(2, 3); // [2, 3]
-add(5, 3, 7, 2); // [ 5, 3, 7, 2]
-add(8, 2, 5, 3, 2, 1, 4); // [8, 2, 5, 3, 2, 1, 4]
+// add(2, 3); // [2, 3]
+// add(5, 3, 7, 2); // [ 5, 3, 7, 2]
+// add(8, 2, 5, 3, 2, 1, 4); // [8, 2, 5, 3, 2, 1, 4]
 
-const x = [1, 2, 3, 6, 76];
+// const x = [1, 2, 3, 6, 76];
 
-add(...x); // [1, 2, 3, 6, 76] REST is packing them anaig
+// add(...x); // [1, 2, 3, 6, 76] REST is packing them anaig
 
-restaurant.orderPizza('mushrooms', 'onion', 'spanich', 'olives'); // mushrooms (as mainIngredient) ["onion", "spanich", "olives"] (as other ingredients)
+// restaurant.orderPizza('mushrooms', 'onion', 'spanich', 'olives'); // mushrooms (as mainIngredient) ["onion", "spanich", "olives"] (as other ingredients)
 
-restaurant.orderPizza('mushrooms'); // mushrooms [] // in this case if we put only one argument in the function it will return it and also will return an empty array as secone argument (its array because by default the otherIngredients is REST and pack them into array)
+// restaurant.orderPizza('mushrooms'); // mushrooms [] // in this case if we put only one argument in the function it will return it and also will return an empty array as secone argument (its array because by default the otherIngredients is REST and pack them into array)
