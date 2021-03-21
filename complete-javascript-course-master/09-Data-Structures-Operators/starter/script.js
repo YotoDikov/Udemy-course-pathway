@@ -95,7 +95,7 @@ restaurant.orderDelivery({
 // With Objects
 // const restaurantCopy = [...restaurant]; // Uncaught TypeError: restaurant is not iterable ... That's because restaurant is Object and the objects are not iterable. That's why we'd better put ...restaurant in curly brackeds:
 // const restaurantCopy = { ...restaurant }; // Object similar to restaurant's object.
-// Now lets remember what happend when we make a copy of an object with object.assign()... we make shadow copy. That means if we change propery value in the copy that  property will be changed in to the original one to. Lets see what will happen in this case where we create a copy with spread operator:
+// Now lets remember what happend when we make a copy of an object with object.assign()... we make shadow copy. That means if we change property value in the copy that  property will be changed in to the original one to. Lets see what will happen in this case where we create a copy with spread operator:
 // restaurantCopy.name = 'Mandjite na Pesho';
 // console.log(restaurantCopy.name); // Mandjite na Pesho
 // console.log(restaurant.name); // Classico Italiano
