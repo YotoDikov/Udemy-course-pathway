@@ -62,7 +62,7 @@ const game = {
     team2: 6.5,
   },
 };
-// 1
+//1
 const [players1, players2] = game.players;
 console.log(players1, players2);
 
